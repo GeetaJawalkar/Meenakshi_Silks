@@ -2,6 +2,15 @@ function scrollToProducts() {
 document.getElementById("products").scrollIntoView({ behavior: "smooth" });
 }
 
+function scrollProducts(direction) {
+const productGrid = document.getElementById("product-grid");
+if (!productGrid) return;
+
+const scrollAmount = 260;
+const move = direction === "left" ? -scrollAmount : scrollAmount;
+productGrid.scrollBy({ left: move, behavior: "smooth" });
+}
+
 const cart = [];
 const CART_STORAGE_KEY = "meenakshi_cart";
 
