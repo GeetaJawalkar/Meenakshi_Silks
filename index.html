@@ -15,6 +15,7 @@
     <nav>
       <a href="#">Home</a>
       <a href="#products">Collections</a>
+      <a href="#cart" onclick="toggleCart(true)">Cart (<span id="cart-count">0</span>)</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -44,25 +45,36 @@
   <div class="product" data-category="silk">
     <img src="https://via.placeholder.com/250" alt="Silk">
     <h3>Silk</h3>
-    <p>€120</p>
-    <button onclick="buyNow('Silk')">Buy</button>
+    <p>₹7000</p>
+    <button onclick="addToCart('Silk', 7000)">Add to Cart</button>
   </div>
 
   <div class="product" data-category="cotton">
     <img src="https://via.placeholder.com/250" alt="Cotton">
     <h3>Cotton</h3>
-    <p>€60</p>
-    <button onclick="buyNow('Cotton')">Buy</button>
+    <p>₹700</p>
+    <button onclick="addToCart('Cotton', 700)">Add to Cart</button>
   </div>
 
   <div class="product" data-category="lehenga">
     <img src="https://via.placeholder.com/250" alt="Lehenga">
     <h3>Bridal Lehenga</h3>
-    <p>€300</p>
-    <button onclick="buyNow('Lehenga')">Buy</button>
+    <p>₹3000</p>
+    <button onclick="addToCart('Lehenga', 3000)">Add to Cart</button>
   </div>
 </div>
 
+  </section>
+
+  <section id="cart" class="cart hidden">
+    <h2>Shopping Cart</h2>
+    <div id="cart-empty">Your cart is empty.</div>
+    <ul id="cart-items"></ul>
+    <p class="cart-total">Total: ₹<span id="cart-total">0</span></p>
+    <div class="cart-actions">
+      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="checkout()">Checkout</button>
+    </div>
   </section>
 
   <!-- ABOUT -->
