@@ -33,30 +33,35 @@
   <section id="products" class="products">
     <h2>Our Collection</h2>
 
-```
+<div class="filter-buttons">
+  <button class="active" onclick="filterProducts('all')">All</button>
+  <button onclick="filterProducts('silk')">Silk</button>
+  <button onclick="filterProducts('cotton')">Cotton</button>
+  <button onclick="filterProducts('lehenga')">Lehenga</button>
+</div>
+
 <div class="product-grid">
-  <div class="product">
+  <div class="product" data-category="silk">
     <img src="https://via.placeholder.com/250" alt="Silk">
-    <h3>Silk Saree</h3>
+    <h3>Silk</h3>
     <p>€120</p>
-    <button onclick="buyNow('Silk Saree')">Buy</button>
+    <button onclick="buyNow('Silk')">Buy</button>
   </div>
 
-  <div class="product">
+  <div class="product" data-category="cotton">
     <img src="https://via.placeholder.com/250" alt="Cotton">
-    <h3>Cotton Saree</h3>
+    <h3>Cotton</h3>
     <p>€60</p>
-    <button onclick="buyNow('Cotton Saree')">Buy</button>
+    <button onclick="buyNow('Cotton')">Buy</button>
   </div>
 
-  <div class="product">
+  <div class="product" data-category="lehenga">
     <img src="https://via.placeholder.com/250" alt="Lehenga">
     <h3>Bridal Lehenga</h3>
     <p>€300</p>
-    <button onclick="buyNow('Bridal Lehenga')">Buy</button>
+    <button onclick="buyNow('Lehenga')">Buy</button>
   </div>
 </div>
-```
 
   </section>
 
