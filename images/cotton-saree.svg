@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#d6c9b6"/>
+    </linearGradient>
+    <pattern id="weave" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M0 10h20M10 0v20" stroke="#b8a68f" stroke-width="1.2" opacity="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect x="35" y="35" width="530" height="530" fill="url(#weave)" stroke="#b8a68f" stroke-width="8"/>
+  <text x="50%" y="50%" text-anchor="middle" fill="#5a4735" font-size="48" font-family="Georgia, serif">Cotton Saree</text>
+  <text x="50%" y="58%" text-anchor="middle" fill="#5a4735" font-size="24" font-family="Georgia, serif">Face-Free Sample</text>
+</svg>

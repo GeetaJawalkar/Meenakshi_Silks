@@ -13,8 +13,9 @@
   <header>
     <h1>Meenakshi Silks</h1>
     <nav>
-      <a href="#">Home</a>
+      <a href="index.html">Home</a>
       <a href="#products">Collections</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -33,30 +34,201 @@
   <section id="products" class="products">
     <h2>Our Collection</h2>
 
-```
-<div class="product-grid">
-  <div class="product">
-    <img src="https://via.placeholder.com/250" alt="Silk">
-    <h3>Silk Saree</h3>
-    <p>€120</p>
-    <button onclick="buyNow('Silk Saree')">Buy</button>
-  </div>
-
-  <div class="product">
-    <img src="https://via.placeholder.com/250" alt="Cotton">
-    <h3>Cotton Saree</h3>
-    <p>€60</p>
-    <button onclick="buyNow('Cotton Saree')">Buy</button>
-  </div>
-
-  <div class="product">
-    <img src="https://via.placeholder.com/250" alt="Lehenga">
-    <h3>Bridal Lehenga</h3>
-    <p>€300</p>
-    <button onclick="buyNow('Bridal Lehenga')">Buy</button>
-  </div>
+<div class="filter-buttons">
+  <button class="active" onclick="filterProducts('all')">All</button>
+  <button onclick="filterProducts('silk')">Silk</button>
+  <button onclick="filterProducts('cotton')">Cotton</button>
+  <button onclick="filterProducts('lehenga')">Lehenga</button>
 </div>
-```
+
+<div class="product-carousel">
+  <button class="scroll-btn" onclick="scrollProducts('left')" aria-label="Scroll products left">◀</button>
+  <div class="product-grid" id="product-grid">
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Kanchipuram Silk Saree</h3>
+      <p>₹7000</p>
+      <button onclick="addToCart('Kanchipuram Silk Saree', 7000)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Banarasi Silk Saree</h3>
+      <p>₹8200</p>
+      <button onclick="addToCart('Banarasi Silk Saree', 8200)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Mysore Silk Saree</h3>
+      <p>₹6800</p>
+      <button onclick="addToCart('Mysore Silk Saree', 6800)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Tussar Silk Saree</h3>
+      <p>₹6400</p>
+      <button onclick="addToCart('Tussar Silk Saree', 6400)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Paithani Silk Saree</h3>
+      <p>₹9800</p>
+      <button onclick="addToCart('Paithani Silk Saree', 9800)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Chanderi Silk Saree</h3>
+      <p>₹5600</p>
+      <button onclick="addToCart('Chanderi Silk Saree', 5600)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Organza Silk Saree</h3>
+      <p>₹7200</p>
+      <button onclick="addToCart('Organza Silk Saree', 7200)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Soft Silk Saree</h3>
+      <p>₹4900</p>
+      <button onclick="addToCart('Soft Silk Saree', 4900)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Gadwal Silk Saree</h3>
+      <p>₹7600</p>
+      <button onclick="addToCart('Gadwal Silk Saree', 7600)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="silk">
+      <img src="images/silk-saree.svg" alt="Silk Saree">
+      <h3>Temple Border Silk Saree</h3>
+      <p>₹8500</p>
+      <button onclick="addToCart('Temple Border Silk Saree', 8500)">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Handloom Cotton Saree</h3>
+      <p>₹700</p>
+      <button onclick="addToCart('Handloom Cotton Saree', 700)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Chettinad Cotton Saree</h3>
+      <p>₹950</p>
+      <button onclick="addToCart('Chettinad Cotton Saree', 950)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Printed Cotton Saree</h3>
+      <p>₹1100</p>
+      <button onclick="addToCart('Printed Cotton Saree', 1100)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Ikat Cotton Saree</h3>
+      <p>₹1300</p>
+      <button onclick="addToCart('Ikat Cotton Saree', 1300)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Kalamkari Cotton Saree</h3>
+      <p>₹1500</p>
+      <button onclick="addToCart('Kalamkari Cotton Saree', 1500)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>South Cotton Saree</h3>
+      <p>₹900</p>
+      <button onclick="addToCart('South Cotton Saree', 900)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Linen Cotton Saree</h3>
+      <p>₹1700</p>
+      <button onclick="addToCart('Linen Cotton Saree', 1700)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Bengal Cotton Saree</h3>
+      <p>₹1200</p>
+      <button onclick="addToCart('Bengal Cotton Saree', 1200)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Daily Wear Cotton Saree</h3>
+      <p>₹650</p>
+      <button onclick="addToCart('Daily Wear Cotton Saree', 650)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="cotton">
+      <img src="images/cotton-saree.svg" alt="Cotton Saree">
+      <h3>Festive Cotton Saree</h3>
+      <p>₹1800</p>
+      <button onclick="addToCart('Festive Cotton Saree', 1800)">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Bridal Lehenga">
+      <h3>Bridal Lehenga</h3>
+      <p>₹3000</p>
+      <button onclick="addToCart('Bridal Lehenga', 3000)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Festive Lehenga</h3>
+      <p>₹4200</p>
+      <button onclick="addToCart('Festive Lehenga', 4200)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Designer Lehenga</h3>
+      <p>₹5600</p>
+      <button onclick="addToCart('Designer Lehenga', 5600)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Embroidered Lehenga</h3>
+      <p>₹6400</p>
+      <button onclick="addToCart('Embroidered Lehenga', 6400)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Mirror Work Lehenga</h3>
+      <p>₹7200</p>
+      <button onclick="addToCart('Mirror Work Lehenga', 7200)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Velvet Lehenga</h3>
+      <p>₹8500</p>
+      <button onclick="addToCart('Velvet Lehenga', 8500)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Party Wear Lehenga</h3>
+      <p>₹3900</p>
+      <button onclick="addToCart('Party Wear Lehenga', 3900)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Pastel Wedding Lehenga</h3>
+      <p>₹7800</p>
+      <button onclick="addToCart('Pastel Wedding Lehenga', 7800)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Zari Work Lehenga</h3>
+      <p>₹6900</p>
+      <button onclick="addToCart('Zari Work Lehenga', 6900)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="lehenga">
+      <img src="images/lehenga.svg" alt="Lehenga">
+      <h3>Reception Lehenga</h3>
+      <p>₹9100</p>
+      <button onclick="addToCart('Reception Lehenga', 9100)">Add to Cart</button>
+    </div>
+  </div>
+  <button class="scroll-btn" onclick="scrollProducts('right')" aria-label="Scroll products right">▶</button>
+</div>
 
   </section>
 
