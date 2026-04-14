@@ -38,6 +38,7 @@ const cart = [];
 let products = [];
 let currentFilter = "all";
 let selectedImageData = "";
+let activeProductId = "";
 
 function scrollToProducts() {
 const productsSection = document.getElementById("products");
@@ -168,15 +169,71 @@ function createProductCard(product) {
 const article = document.createElement("article");
 article.className = "product";
 article.dataset.category = product.category;
+article.tabIndex = 0;
+article.setAttribute("role", "button");
+article.setAttribute("aria-label", `${product.name} details`);
+article.addEventListener("click", () => openProductModal(product.id));
+article.addEventListener("keydown", (event) => {
+if (event.key === "Enter" || event.key === " ") {
+event.preventDefault();
+openProductModal(product.id);
+}
+});
 article.innerHTML = `
   <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}">
   <p class="product-id">${escapeHtml(product.id)}</p>
   <h3>${escapeHtml(product.name)}</h3>
   <p class="product-category">${escapeHtml(product.category)}</p>
   <p class="product-price">₹${product.price}</p>
-  <button type="button" onclick="addToCart('${escapeHtml(product.id)}')">Add to Cart</button>
+  <button type="button" onclick="event.stopPropagation(); addToCart('${escapeHtml(product.id)}')">Add to Cart</button>
 `;
 return article;
+}
+
+function openProductModal(productId) {
+const product = products.find((item) => item.id === productId);
+const modal = document.getElementById("product-modal");
+const modalImage = document.getElementById("product-modal-image");
+const modalId = document.getElementById("product-modal-id");
+const modalTitle = document.getElementById("product-modal-title");
+const modalCategory = document.getElementById("product-modal-category");
+const modalPrice = document.getElementById("product-modal-price");
+const modalCartButton = document.getElementById("product-modal-cart-btn");
+
+if (
+!product ||
+!modal ||
+!modalImage ||
+!modalId ||
+!modalTitle ||
+!modalCategory ||
+!modalPrice ||
+!modalCartButton
+) {
+return;
+}
+
+activeProductId = product.id;
+modalImage.src = product.image;
+modalImage.alt = product.name;
+modalId.textContent = product.id;
+modalTitle.textContent = product.name;
+modalCategory.textContent = product.category;
+modalPrice.textContent = `₹${product.price}`;
+modalCartButton.onclick = () => addToCart(product.id);
+modal.classList.add("open");
+modal.setAttribute("aria-hidden", "false");
+document.body.classList.add("modal-open");
+}
+
+function closeProductModal() {
+const modal = document.getElementById("product-modal");
+if (!modal) return;
+
+activeProductId = "";
+modal.classList.remove("open");
+modal.setAttribute("aria-hidden", "true");
+document.body.classList.remove("modal-open");
 }
 
 function renderProducts() {
@@ -428,10 +485,19 @@ alert("Product catalog reset to default items.");
 renderOwnerProducts();
 }
 
+function setupProductModal() {
+document.addEventListener("keydown", (event) => {
+if (event.key === "Escape" && activeProductId) {
+closeProductModal();
+}
+});
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 loadProducts();
 loadCart();
 renderProducts();
 updateCartUI();
 setupOwnerApp();
+setupProductModal();
 });
