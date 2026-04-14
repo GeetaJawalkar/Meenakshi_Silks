@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner App | Meenakshi Silks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Meenakshi Silks</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Collections</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      <a href="admin.html">Owner App</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="owner-app">
+    <section class="owner-panel">
+      <div>
+        <p class="eyebrow">Owner Application</p>
+        <h2>Add a Product</h2>
+        <p class="owner-intro">Upload a product image and enter the product ID, name, category, and price. Saved items will appear on this browser's storefront immediately.</p>
+      </div>
+
+      <form id="owner-product-form" class="owner-form">
+        <label>
+          Product Image
+          <input id="product-image" type="file" accept="image/*" required>
+        </label>
+
+        <label>
+          Product ID
+          <input id="product-id" type="text" placeholder="SILK-011" required>
+        </label>
+
+        <label>
+          Product Name
+          <input id="product-name" type="text" placeholder="Pure Zari Silk Saree" required>
+        </label>
+
+        <label>
+          Product Category
+          <select id="product-category" required>
+            <option value="">Choose a category</option>
+            <option value="silk">Silk</option>
+            <option value="cotton">Cotton</option>
+            <option value="lehenga">Lehenga</option>
+          </select>
+        </label>
+
+        <label>
+          Product Price
+          <input id="product-price" type="number" min="0" step="1" placeholder="7000" required>
+        </label>
+
+        <div class="owner-form-actions">
+          <button type="submit">Save Product</button>
+          <button type="button" class="secondary-btn" id="reset-products">Reset Catalog</button>
+        </div>
+      </form>
+
+      <div class="image-preview-wrap">
+        <p class="preview-title">Image Preview</p>
+        <img id="image-preview" class="image-preview" alt="Selected product preview">
+      </div>
+    </section>
+
+    <section class="owner-catalog">
+      <h2>Saved Products</h2>
+      <ul id="owner-product-list" class="owner-product-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Meenakshi Silks</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
